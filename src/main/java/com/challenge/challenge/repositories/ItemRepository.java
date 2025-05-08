@@ -12,8 +12,8 @@ public interface ItemRepository extends JpaRepository<AbstractReadWriteAccess.It
     List<Item> findByCategory(@Param("category") String category);
 
     @Query("SELECT i FROM Item i WHERE i.price < :maxPrice")
-    List<Item> findByPriceLessThan(@Param("maxPrice") double maxPrice);
+    List<Item> findByLessThen(@Param("maxPrice") double maxPrice);
 
     @Query(value = "SELECT * FROM item WHERE LOWER(name) = LOWER(:name)", nativeQuery = true)
-    List<Item> findByNameIgnoreCase(@Param("name") String name);
+    List<Item> findByIgnoringCase(@Param("name") String name);
 }
