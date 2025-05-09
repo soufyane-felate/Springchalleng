@@ -9,12 +9,12 @@ import java.util.List;
 
 public interface ItemRepository extends JpaRepository<Product, Long> {
 //challenge 2
-    @Query("SELECT i FROM Product i WHERE i.category = :category")
+    @Query("SELECT i FROM product i WHERE i.category = :category")
     List<Product> findByCategory(@Param("category") String category);
 
-    @Query("SELECT i FROM Product i WHERE i.price < :maxPrice")
+    @Query("SELECT i FROM product i WHERE i.price < :maxPrice")
     List<Product> findByLessThen(@Param("maxPrice") double maxPrice);
 
-    @Query(value = "SELECT * FROM item WHERE LOWER(name) = LOWER(:name)", nativeQuery = true)
+    @Query(value = "SELECT * FROM product WHERE LOWER(name) = LOWER(:name)", nativeQuery = true)
     List<Product> findByIgnoringCase(@Param("name") String name);
 }
